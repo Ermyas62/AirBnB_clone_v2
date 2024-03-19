@@ -6,12 +6,12 @@ from importlib import import_module
 
 
 class FileStorage:
-    """This class manages storage of hbnb models in JSON format"""
+    """manage a storage of hbnb models in JSON format"""
     __file_path = 'file.json'
     __objects = {}
 
     def __init__(self):
-        """intialize FileStorage instance"""
+        """Initialize FileStorage instance"""
         self.model_classes = {
             'BaseModel': import_module('models.base_model').BaseModel,
             'User': import_module('models.user').User,
@@ -23,7 +23,7 @@ class FileStorage:
         }
 
     def all(self, cls=None):
-        """Return  dictionary of models currently in storage"""
+        """Return dictionary of models currently in storage"""
         if cls is None:
             return self.__objects
         else:
@@ -44,10 +44,10 @@ class FileStorage:
         """Add new object to storage dictionary"""
         self.__objects.update(
             {obj.to_dict()['__class__'] + '.' + obj.id: obj}
-            )
+        )
 
     def save(self):
-        """Saves storage dictionary to file"""
+        """Save a storage dictionary to file"""
         with open(self.__file_path, 'w') as file:
             temp = {}
             for key, val in self.__objects.items():
@@ -55,7 +55,7 @@ class FileStorage:
             json.dump(temp, file)
 
     def reload(self):
-        """Loads storage dictionary from file"""
+        """Load a storage dictionary from file"""
         classes = self.model_classes
         if os.path.isfile(self.__file_path):
             temp = {}
@@ -65,5 +65,5 @@ class FileStorage:
                     self.all()[key] = classes[val['__class__']](**val)
 
     def close(self):
-        """Closes the storage engine."""
+        """Close a storage engine."""
         self.reload()
