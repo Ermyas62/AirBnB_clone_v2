@@ -7,7 +7,6 @@ import os
 import uuid
 from datetime import datetime
 from shlex import split
-
 from models.base_model import BaseModel
 from models import storage
 from models.user import User
@@ -80,7 +79,7 @@ class HBNBCommand(cmd.Cmd):
                 if pline:
                     # check for *args or **kwargs
                     if pline[0] == '{' and pline[-1] =='}'\
-                            and type(eval(pline)) is dict:
+                            and type(eval(pline)) == dict:
                         _args = pline
                     else:
                         _args = pline.replace(',', '')
