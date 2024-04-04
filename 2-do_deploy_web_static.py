@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# Fabric script (based on the file 1-pack_web_static.py) that distributes 
+# Fabric script (based on the file 1-pack_web_static.py) that distributes
 # an archive to a web servers, using the function do_deploy:
 import os.path
 from fabric.api import env
