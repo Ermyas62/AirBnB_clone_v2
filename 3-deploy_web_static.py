@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# A fabric script (based on the file 2-do_deploy_web_static.py) that creates 
+# A fabric script (based on the file 2-do_deploy_web_static.py) that creates
 # and distributes an archive to a web servers, using the function deploy:
 import os.path
 from datetime import datetime
